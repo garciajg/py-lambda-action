@@ -15,7 +15,7 @@ publish_dependencies_as_layer(){
 	rm -rf python
 	rm dependencies.zip
 	echo "Sleeping"
-	sleep 10
+	sleep 60
 }
 
 publish_function_code(){
