@@ -14,6 +14,8 @@ publish_dependencies_as_layer(){
 	LAYER_VERSION=$(jq '.Version' <<< "$result")
 	rm -rf python
 	rm dependencies.zip
+	echo "Sleeping"
+	sleep 10
 }
 
 publish_function_code(){
