@@ -26,7 +26,14 @@ update_function_layers(){
 	echo "Using the layer in the function..."
 	echo "Sleeping"
 	sleep 30
-	aws lambda update-function-configuration --function-name "${INPUT_LAMBDA_FUNCTION_NAME}" --layers "${INPUT_LAMBDA_LAYER_ARN}:${LAYER_VERSION}"
+	aws lambda update-function-configuration \
+		--function-name "${INPUT_LAMBDA_FUNCTION_NAME}" \
+		--layers "${INPUT_LAMBDA_LAYER_ARN}:${LAYER_VERSION}" \
+		--handler index.lambda_handler \
+		--timeout 900 \
+		--memory-size 512 \
+		--runtime python3.9 \
+		--ephemeral-storage 1024
 }
 
 deploy_lambda_function(){
