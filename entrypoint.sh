@@ -14,12 +14,12 @@ publish_dependencies_as_layer(){
 	LAYER_VERSION=$(jq '.Version' <<< "$result")
 	rm -rf python
 	rm dependencies.zip
-	echo "Sleeping"
-	sleep 60
 }
 
 publish_function_code(){
 	echo "Deploying the code itself..."
+	echo "Sleeping"
+	sleep 30
 	zip -r code.zip . -x \*.git\*
 	aws lambda update-function-code --function-name "${INPUT_LAMBDA_FUNCTION_NAME}" --zip-file fileb://code.zip
 }
